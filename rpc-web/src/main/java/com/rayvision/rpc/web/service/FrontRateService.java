@@ -4,4 +4,6 @@ import com.rayvision.rpc.common.ApiResponse;
 
 public interface FrontRateService {
     public ApiResponse selectById(Integer id) throws Exception;
+
+    ApiResponse selectUserByUsername(String userName) throws Exception;
 }
