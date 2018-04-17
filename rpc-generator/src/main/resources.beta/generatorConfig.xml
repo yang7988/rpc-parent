@@ -3,7 +3,7 @@
         "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
 <generatorConfiguration>
-    <properties url="file:E:/github/rpc-parent/rpc-generator/mbg.properties"/>
+    <properties url="file:E:/github/rpc-parent/rpc-generator/src/main/resources.beta/mbg.properties"/>
     <classPathEntry location="${mbg.jar.path}"/>
     <context id="context1" defaultModelType="flat">
 
@@ -12,9 +12,9 @@
         </commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://10.60.96.142:3306/rendering_new?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false&amp;nullNamePatternMatchesAll=true"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/rpc?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false&amp;nullNamePatternMatchesAll=true"
                         userId="root"
-                        password="w0_Ruiyun@2016"/>
+                        password="123456"/>
 
         <javaModelGenerator targetPackage="com.rayvision.rpc.business.entity"
                             targetProject="${target.module.sdk.base}/src/main/java">
