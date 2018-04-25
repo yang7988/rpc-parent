@@ -12,6 +12,7 @@
 		<module>rpc-api</module>
 		<module>rpc-common</module>
 		<module>rpc-generator</module>
+		<module>rpc-cache</module>
 	</modules>
 	<packaging>pom</packaging>
 
@@ -41,6 +42,11 @@
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-starter-web</artifactId>
+				<version>${spring.boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-data-redis</artifactId>
 				<version>${spring.boot.version}</version>
 			</dependency>
 			<dependency>

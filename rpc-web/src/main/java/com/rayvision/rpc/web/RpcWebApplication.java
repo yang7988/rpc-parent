@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableAutoConfiguration
-@ComponentScan(basePackages={"com.rayvision.rpc.web"})
+@ComponentScan(basePackages={"com.rayvision.rpc.web","com.rayvision.rpc.cache"})
 @EnableDubbo(scanBasePackages={"com.rayvision.rpc.web"})
 public class RpcWebApplication {
 
