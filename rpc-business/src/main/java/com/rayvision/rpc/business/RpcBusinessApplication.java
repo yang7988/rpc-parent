@@ -13,7 +13,7 @@ import java.io.IOException;
 
 @Configuration
 @EnableAutoConfiguration
-@ComponentScan(basePackages = "com.rayvision.rpc.business")
+@ComponentScan(basePackages = {"com.rayvision.rpc.business","com.rayvision.rpc.cache"})
 @MapperScan(basePackages = "com.rayvision.rpc.business.mapper")
 @EnableDubbo(scanBasePackages = "com.rayvision.rpc.business")
 public class RpcBusinessApplication {

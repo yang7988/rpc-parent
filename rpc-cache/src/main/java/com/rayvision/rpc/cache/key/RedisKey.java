@@ -9,6 +9,10 @@ public class RedisKey {
         this.key = key;
     }
 
+    public String getRedisKey() {
+        return makeString();
+    }
+
     public RedisKeysPrefix getRedisKeysPrefix() {
         return redisKeysPrefix;
     }
