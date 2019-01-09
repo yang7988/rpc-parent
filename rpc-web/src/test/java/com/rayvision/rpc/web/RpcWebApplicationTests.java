@@ -1,6 +1,7 @@
 package com.rayvision.rpc.web;
 
 import com.rayvision.rpc.cache.JedisTemplate;
+import com.rayvision.rpc.cache.enums.JedisStatus;
 import com.rayvision.rpc.cache.key.RedisKey;
 import com.rayvision.rpc.cache.key.RedisKeysPrefix;
 import org.junit.Test;
@@ -20,8 +21,8 @@ public class RpcWebApplicationTests {
 	public void testJedis() throws Exception {
 		String key = System.currentTimeMillis() + "";
 		RedisKey redisKey = new RedisKey(RedisKeysPrefix.USER_KEY, key);
-		String resp = jedisTemplate.set(redisKey, "hello world");
-		System.out.println(resp);
+		JedisStatus status = jedisTemplate.set(redisKey, "hello world");
+		System.out.println(status.name());
 	}
 
 }
