@@ -43,7 +43,7 @@ public class JedisTemplate {
             jedisStatus = JedisStatus.OK;
         } catch (Exception e) {
             if(LOGGER.isErrorEnabled()) {
-                LOGGER.error("JedisTemplate set({},{}) method called error \r\n{}"
+                LOGGER.error("JedisTemplate set({},{}) method called error {}"
                         ,key.getRedisKey(),value,ExceptionUtils.getStackTrace(e));
             }
             jedisStatus = JedisStatus.FAILD;
@@ -62,7 +62,7 @@ public class JedisTemplate {
             closeJedis(jedis);
         } catch (Exception e) {
             if(LOGGER.isErrorEnabled()) {
-                LOGGER.error("JedisTemplate get({},{}) method called error \r\n{}"
+                LOGGER.error("JedisTemplate get({},{}) method called error {}"
                         ,key.getRedisKey(),clazz.getName(), ExceptionUtils.getStackTrace(e));
             }
         }
