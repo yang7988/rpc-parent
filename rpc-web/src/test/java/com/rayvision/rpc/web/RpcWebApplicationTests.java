@@ -21,7 +21,7 @@ public class RpcWebApplicationTests {
 	public void testJedis() throws Exception {
 		String key = System.currentTimeMillis() + "";
 		RedisKey redisKey = new RedisKey(RedisKeysPrefix.USER_KEY, key);
-		JedisStatus status = jedisTemplate.set(redisKey, "hello world");
+		JedisStatus status = jedisTemplate.setex(redisKey, 100,"hello world");
 		System.out.println(status.name());
 	}
 

@@ -37,9 +37,9 @@ public class JedisTemplate {
     public JedisStatus set(RedisKey key, Object value) {
         JedisStatus jedisStatus;
         try {
-            Jedis jedis = getJedis();
+            Jedis jedis = this.getJedis();
             jedis.set(key.getRedisKey().getBytes(Charset.defaultCharset()),serializer.serializer(value));
-            closeJedis(jedis);
+            this.closeJedis(jedis);
             jedisStatus = JedisStatus.OK;
         } catch (Exception e) {
             if(LOGGER.isErrorEnabled()) {
@@ -51,15 +51,32 @@ public class JedisTemplate {
         return jedisStatus;
     }
 
+    public JedisStatus setex(RedisKey key, int expire,Object value) {
+        JedisStatus jedisStatus;
+        try {
+            Jedis jedis = this.getJedis();
+            jedis.setex(key.getRedisKey().getBytes(Charset.defaultCharset()), expire, serializer.serializer(value));
+            this.closeJedis(jedis);
+            jedisStatus = JedisStatus.OK;
+        } catch (Exception e) {
+            if(LOGGER.isErrorEnabled()) {
+                LOGGER.error("JedisTemplate set({},{},{}) method called error {}"
+                        ,key.getRedisKey(),expire,value,ExceptionUtils.getStackTrace(e));
+            }
+            jedisStatus = JedisStatus.FAILD;
+        }
+        return jedisStatus;
+    }
+
     public <T> T get(RedisKey key, Class<T> clazz) {
         T t = null;
         try {
-            Jedis jedis = getJedis();
+            Jedis jedis = this.getJedis();
             byte[] bytes = jedis.get(key.getRedisKey().getBytes(Charset.defaultCharset()));
             if (bytes != null) {
                 t = serializer.deserializer(bytes, clazz);
             }
-            closeJedis(jedis);
+            this.closeJedis(jedis);
         } catch (Exception e) {
             if(LOGGER.isErrorEnabled()) {
                 LOGGER.error("JedisTemplate get({},{}) method called error {}"
