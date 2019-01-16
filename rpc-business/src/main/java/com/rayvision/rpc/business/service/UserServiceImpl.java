@@ -6,13 +6,14 @@ import com.rayvision.rpc.business.entity.User;
 import com.rayvision.rpc.business.entity.UserExample;
 import com.rayvision.rpc.business.mapper.UserMapper;
 import com.rayvision.rpc.common.ApiResponse;
+import com.rayvision.rpc.common.util.ObjectUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
-@Service(version = "1.0.0")
+@Service(version = "1.0.0",provider = "providerConfig",protocol = "protocolConfig")
 public class UserServiceImpl implements UserService{
     @Autowired
     private UserMapper userMapper;
@@ -24,6 +25,6 @@ public class UserServiceImpl implements UserService{
         criteria.andUsernameEqualTo(userName);
         List<User> list = userMapper.selectByExample(example);
         User user = list.get(0);
-        return ApiResponse.returnSuccess(user);
+        return ApiResponse.returnSuccess(ObjectUtil.objectToMap(user));
     }
 }
