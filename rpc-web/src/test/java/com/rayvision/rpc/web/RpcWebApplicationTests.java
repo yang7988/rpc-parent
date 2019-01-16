@@ -19,10 +19,12 @@ public class RpcWebApplicationTests {
 
 	@Test
 	public void testJedis() throws Exception {
-		String key = System.currentTimeMillis() + "";
+		String key = "hello";
 		RedisKey redisKey = new RedisKey(RedisKeysPrefix.USER_KEY, key);
-		JedisStatus status = jedisTemplate.setex(redisKey, 100,"hello world");
-		System.out.println(status.name());
+//		JedisStatus status = jedisTemplate.setex(redisKey, 100,"hello world");
+		JedisStatus status = jedisTemplate.set(redisKey, 123);
+		int a = jedisTemplate.get(redisKey, int.class);
+		System.out.println(a);
 	}
 
 }
