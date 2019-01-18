@@ -11,6 +11,8 @@ public class DubboProperties {
     private String dubboRegProtocol;
     @Value("${dubbo.register.address}")
     private String dubboRegAddress;
+    @Value("${dubbo.register.nacos.address}")
+    private String nacosRegAddress;
 
     public String getDubboApplicationName() {
         return this.dubboApplicationName;
@@ -22,5 +24,9 @@ public class DubboProperties {
 
     public String getDubboRegAddress() {
         return this.dubboRegAddress;
+    }
+
+    public String getNacosRegAddress() {
+        return nacosRegAddress;
     }
 }

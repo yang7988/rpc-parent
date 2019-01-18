@@ -47,5 +47,10 @@
             <artifactId>spring-context-support</artifactId>
             <version>1.0.2</version>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo-registry-nacos</artifactId>
+            <version>0.0.1</version>
+        </dependency>
     </dependencies>
 </project>

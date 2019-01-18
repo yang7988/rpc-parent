@@ -12,6 +12,8 @@ public class DubboProperties
   private String dubboRegProtocol;
   @Value("${dubbo.provider.register.address}")
   private String dubboRegAddress;
+  @Value("${dubbo.provider.register.nacos.address}")
+  private String nacosRegAddress;
   @Value("${dubbo.protocol.name}")
   private String dubboProtocolName;
   @Value("${dubbo.protocol.port}")
@@ -47,5 +49,9 @@ public class DubboProperties
   public Integer getDubboProtocolThreads()
   {
     return this.dubboProtocolThreads;
+  }
+
+  public String getNacosRegAddress() {
+    return nacosRegAddress;
   }
 }
