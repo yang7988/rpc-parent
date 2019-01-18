@@ -21,7 +21,7 @@ public class RateServiceImpl implements RateService {
 
     public ApiResponse selectById(Integer id) throws Exception {
         this.logger.info("rate id is " + id);
-        Rate rate = rateMapper.selectByPrimaryKey(1);
+        Rate rate = rateMapper.selectByPrimaryKey(id);
         return ApiResponse.returnSuccess(ObjectUtil.objectToMap(rate));
     }
 }
