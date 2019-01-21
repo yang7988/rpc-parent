@@ -7,6 +7,8 @@ public class Order {
 
     private String orderNo;
 
+    private Byte payMethod;
+
     private Integer userId;
 
     private Date createDate;
@@ -29,6 +31,14 @@ public class Order {
 
     public void setOrderNo(String orderNo) {
         this.orderNo = orderNo;
+    }
+
+    public Byte getPayMethod() {
+        return payMethod;
+    }
+
+    public void setPayMethod(Byte payMethod) {
+        this.payMethod = payMethod;
     }
 
     public Integer getUserId() {

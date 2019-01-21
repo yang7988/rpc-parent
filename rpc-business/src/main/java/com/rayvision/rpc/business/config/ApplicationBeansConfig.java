@@ -38,7 +38,7 @@ public class ApplicationBeansConfig {
     public ProviderConfig providerConfig() {
         ProviderConfig providerConfig = new ProviderConfig();
         providerConfig.setServer("netty4");
-        providerConfig.setRegistries(Arrays.asList(zookeeperRegistry(),nacosRegistry()));
+        providerConfig.setRegistries(Arrays.asList(zookeeperRegistry()/*,nacosRegistry()*/));
         return providerConfig;
     }
 
@@ -50,12 +50,12 @@ public class ApplicationBeansConfig {
         return registry;
     }
 
-    @Bean
+    /*@Bean
     public RegistryConfig nacosRegistry() {
         RegistryConfig registry = new RegistryConfig();
         registry.setAddress(this.dubboProperties.getNacosRegAddress());
         return registry;
-    }
+    }*/
 
     @Bean
     public ProtocolConfig protocolConfig() {

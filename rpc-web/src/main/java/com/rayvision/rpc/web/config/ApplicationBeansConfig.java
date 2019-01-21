@@ -33,7 +33,7 @@ public class ApplicationBeansConfig {
         logger.info("dubbo消费者应用名称: " + this.dubboProperties.getDubboApplicationName());
         ApplicationConfig applicationConfig = new ApplicationConfig();
         applicationConfig.setName(this.dubboProperties.getDubboApplicationName());
-        applicationConfig.setRegistries(Arrays.asList(registry(),nacosRegistry()));
+        applicationConfig.setRegistries(Arrays.asList(registry()/*,nacosRegistry()*/));
         return applicationConfig;
     }
 
@@ -46,10 +46,10 @@ public class ApplicationBeansConfig {
         registry.setAddress(this.dubboProperties.getDubboRegAddress());
         return registry;
     }
-    @Bean
+    /*@Bean
     public RegistryConfig nacosRegistry() {
         RegistryConfig registry = new RegistryConfig();
         registry.setAddress(this.dubboProperties.getNacosRegAddress());
         return registry;
-    }
+    }*/
 }

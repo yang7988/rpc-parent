@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="com.rayvision.rpc.business.entity.Order">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="order_no" jdbcType="VARCHAR" property="orderNo" />
+    <result column="pay_method" jdbcType="TINYINT" property="payMethod" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
     <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
@@ -68,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, order_no, user_id, create_date, update_date, is_delete
+    id, order_no, pay_method, user_id, create_date, update_date, is_delete
   </sql>
   <select id="selectByExample" parameterType="com.rayvision.rpc.business.entity.OrderExample" resultMap="BaseResultMap">
     select
@@ -101,12 +102,12 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.rayvision.rpc.business.entity.Order">
-    insert into tb_order (id, order_no, user_id, 
-      create_date, update_date, is_delete
-      )
-    values (#{id,jdbcType=INTEGER}, #{orderNo,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
-      #{createDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=TINYINT}
-      )
+    insert into tb_order (id, order_no, pay_method, 
+      user_id, create_date, update_date, 
+      is_delete)
+    values (#{id,jdbcType=INTEGER}, #{orderNo,jdbcType=VARCHAR}, #{payMethod,jdbcType=TINYINT}, 
+      #{userId,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP}, 
+      #{isDelete,jdbcType=TINYINT})
   </insert>
   <insert id="insertSelective" parameterType="com.rayvision.rpc.business.entity.Order">
     insert into tb_order
@@ -116,6 +117,9 @@
       </if>
       <if test="orderNo != null">
         order_no,
+      </if>
+      <if test="payMethod != null">
+        pay_method,
       </if>
       <if test="userId != null">
         user_id,
@@ -136,6 +140,9 @@
       </if>
       <if test="orderNo != null">
         #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="payMethod != null">
+        #{payMethod,jdbcType=TINYINT},
       </if>
       <if test="userId != null">
         #{userId,jdbcType=INTEGER},
@@ -166,6 +173,9 @@
       <if test="record.orderNo != null">
         order_no = #{record.orderNo,jdbcType=VARCHAR},
       </if>
+      <if test="record.payMethod != null">
+        pay_method = #{record.payMethod,jdbcType=TINYINT},
+      </if>
       <if test="record.userId != null">
         user_id = #{record.userId,jdbcType=INTEGER},
       </if>
@@ -187,6 +197,7 @@
     update tb_order
     set id = #{record.id,jdbcType=INTEGER},
       order_no = #{record.orderNo,jdbcType=VARCHAR},
+      pay_method = #{record.payMethod,jdbcType=TINYINT},
       user_id = #{record.userId,jdbcType=INTEGER},
       create_date = #{record.createDate,jdbcType=TIMESTAMP},
       update_date = #{record.updateDate,jdbcType=TIMESTAMP},
@@ -200,6 +211,9 @@
     <set>
       <if test="orderNo != null">
         order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="payMethod != null">
+        pay_method = #{payMethod,jdbcType=TINYINT},
       </if>
       <if test="userId != null">
         user_id = #{userId,jdbcType=INTEGER},
@@ -219,6 +233,7 @@
   <update id="updateByPrimaryKey" parameterType="com.rayvision.rpc.business.entity.Order">
     update tb_order
     set order_no = #{orderNo,jdbcType=VARCHAR},
+      pay_method = #{payMethod,jdbcType=TINYINT},
       user_id = #{userId,jdbcType=INTEGER},
       create_date = #{createDate,jdbcType=TIMESTAMP},
       update_date = #{updateDate,jdbcType=TIMESTAMP},

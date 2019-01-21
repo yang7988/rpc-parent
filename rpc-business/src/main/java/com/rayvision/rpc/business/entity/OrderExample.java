@@ -235,6 +235,66 @@ public class OrderExample {
             return (Criteria) this;
         }
 
+        public Criteria andPayMethodIsNull() {
+            addCriterion("pay_method is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayMethodIsNotNull() {
+            addCriterion("pay_method is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayMethodEqualTo(Byte value) {
+            addCriterion("pay_method =", value, "payMethod");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayMethodNotEqualTo(Byte value) {
+            addCriterion("pay_method <>", value, "payMethod");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayMethodGreaterThan(Byte value) {
+            addCriterion("pay_method >", value, "payMethod");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayMethodGreaterThanOrEqualTo(Byte value) {
+            addCriterion("pay_method >=", value, "payMethod");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayMethodLessThan(Byte value) {
+            addCriterion("pay_method <", value, "payMethod");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayMethodLessThanOrEqualTo(Byte value) {
+            addCriterion("pay_method <=", value, "payMethod");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayMethodIn(List<Byte> values) {
+            addCriterion("pay_method in", values, "payMethod");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayMethodNotIn(List<Byte> values) {
+            addCriterion("pay_method not in", values, "payMethod");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayMethodBetween(Byte value1, Byte value2) {
+            addCriterion("pay_method between", value1, value2, "payMethod");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayMethodNotBetween(Byte value1, Byte value2) {
+            addCriterion("pay_method not between", value1, value2, "payMethod");
+            return (Criteria) this;
+        }
+
         public Criteria andUserIdIsNull() {
             addCriterion("user_id is null");
             return (Criteria) this;
