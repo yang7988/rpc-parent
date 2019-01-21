@@ -12,7 +12,7 @@
         </commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://127.0.0.1:3306/rpc?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false&amp;nullNamePatternMatchesAll=true"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/rpc-business?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false&amp;nullNamePatternMatchesAll=true"
                         userId="root"
                         password="123456"/>
 
@@ -28,7 +28,7 @@
                              targetProject="${target.module.sdk.base}/src/main/java"
                              type="XMLMAPPER"/>
 
-        <table schema="rendering_new" tableName="tb_rate" domainObjectName="Rate"></table>
+        <table schema="rendering_new" tableName="tb_order" domainObjectName="Order"></table>
 
     </context>
 </generatorConfiguration>
