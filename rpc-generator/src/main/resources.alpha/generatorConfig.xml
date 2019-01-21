@@ -12,11 +12,11 @@
         </commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://127.0.0.1:3306/rpc-business?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false&amp;nullNamePatternMatchesAll=true"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/rpc-web?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false&amp;nullNamePatternMatchesAll=true"
                         userId="root"
                         password="123456"/>
 
-        <javaModelGenerator targetPackage="com.rayvision.rpc.business.entity"
+        <javaModelGenerator targetPackage="com.rayvision.rpc.web.entity"
                             targetProject="${target.module.sdk.base}/src/main/java">
             <property name="mergeable" value="false"/>
         </javaModelGenerator>
@@ -24,11 +24,11 @@
         <sqlMapGenerator targetPackage="mapper"
                          targetProject="${target.module.sdk.base}/src/main/resources"/>
 
-        <javaClientGenerator targetPackage="com.rayvision.rpc.business.mapper"
+        <javaClientGenerator targetPackage="com.rayvision.rpc.web.mapper"
                              targetProject="${target.module.sdk.base}/src/main/java"
                              type="XMLMAPPER"/>
 
-        <table schema="rendering_new" tableName="tb_product" domainObjectName="Product"></table>
+        <table schema="rendering_new" tableName="tb_user_account" domainObjectName="UserAccount"></table>
 
     </context>
 </generatorConfiguration>
