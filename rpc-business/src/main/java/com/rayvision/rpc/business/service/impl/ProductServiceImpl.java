@@ -3,6 +3,7 @@ package com.rayvision.rpc.business.service.impl;
 import com.rayvision.rpc.business.entity.Product;
 import com.rayvision.rpc.business.mapper.ProductMapper;
 import com.rayvision.rpc.business.service.ProductService;
+import com.rayvision.rpc.common.enums.ApiResponseEnum;
 import com.rayvision.rpc.common.exception.BusinessException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,9 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product deductionStock(Integer productId, Integer quantity) throws BusinessException {
         Product product = productMapper.selectByPrimaryKey(productId);
+        if(product.getStock() < quantity) {
+            throw new BusinessException(ApiResponseEnum.PRODUCT_STOCK_NOT_ENOUGH);
+        }
         Integer stock = product.getStock() - quantity;
         Product productForUpdate = new Product();
         productForUpdate.setId(productId);

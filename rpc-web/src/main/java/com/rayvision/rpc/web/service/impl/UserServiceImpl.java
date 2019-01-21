@@ -1,6 +1,7 @@
 package com.rayvision.rpc.web.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.alibaba.fastjson.JSON;
 import com.rayvision.rpc.api.business.RpcOrderService;
 import com.rayvision.rpc.api.business.RpcProductService;
 import com.rayvision.rpc.common.ApiResponse;
@@ -13,6 +14,7 @@ import com.rayvision.rpc.web.service.UserService;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -34,6 +36,7 @@ public class UserServiceImpl implements UserService {
     private UserAccountMapper userAccountMapper;
 
     @Override
+    @Transactional
     public ApiResponse purchaseProduct(Integer userId, Integer productId, Integer quantity,Byte payMethod) {
         ApiResponse orderResponse = rpcOrderService.createOrder(userId, payMethod, productId, quantity);
         UserAccountExample userAccountExample = new UserAccountExample();
@@ -45,10 +48,14 @@ public class UserServiceImpl implements UserService {
         UserAccount userAccount = userAccounts.get(0);
         Map<String,Object> objectMap = (Map<String, Object>) orderResponse.getData();
         BigDecimal totalPrice = (BigDecimal) objectMap.get("totalPrice");
+        if(userAccount.getBalance().compareTo(totalPrice) < 0) {
+            ApiResponse.returnFail(ApiResponseEnum.FAIL);
+        }
         UserAccount userAccountForUpdate = new UserAccount();
         userAccountForUpdate.setId(userAccount.getId());
         userAccountForUpdate.setBalance(userAccount.getBalance().subtract(totalPrice).setScale(2,BigDecimal.ROUND_HALF_UP));
         userAccountMapper.updateByPrimaryKeySelective(userAccountForUpdate);
+        rpcOrderService.saveOrder(JSON.toJSONString(objectMap));
         rpcProductService.deductionProductStock(productId,quantity);
         return ApiResponse.returnSuccess();
     }

@@ -25,20 +25,26 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Map<String, Object> generateOrder(Integer userId, Byte paymethod,Integer productId,Integer quantity) throws BusinessException {
+        Product product = productMapper.selectByPrimaryKey(productId);
         Order order = new Order();
         order.setUserId(userId);
         order.setPayMethod(paymethod);
         order.setOrderNo(UUID.randomUUID().toString());
-        orderMapper.insertSelective(order);
-        Product product = productMapper.selectByPrimaryKey(productId);
+        order.setPruductId(productId);
         BigDecimal unitPrice = product.getUnitPrice();
         BigDecimal total = unitPrice.multiply(new BigDecimal(quantity)).setScale(2, BigDecimal.ROUND_HALF_UP);
         Map<String, Object> response = new HashMap<>();
         response.put("userId", userId);
         response.put("payMethod", paymethod);
+        response.put("pruductId", productId);
         response.put("orderNo", order.getOrderNo());
         response.put("unitPrice", unitPrice);
         response.put("totalPrice", total);
         return response;
+    }
+
+    @Override
+    public Integer saveOrder(Order order) {
+        return orderMapper.insertSelective(order);
     }
 }

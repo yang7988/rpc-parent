@@ -9,6 +9,7 @@ public enum ApiResponseEnum implements Serializable {
     RESOURCE_NOT_FOUND(404, "RESOURCE_NOT_FOUND", "资源不存在", false),
     INTERNAL_ERROR(500, "INTERNAL_ERROR", "服务器处理失败", false),
     PARAMETER_CANT_BE_EMPTY(601, "PARAMETER_CANT_BE_EMPTY", "缺少必要参数", false),
+    PRODUCT_STOCK_NOT_ENOUGH(602, "PRODUCT_STOCK_NOT_ENOUGH", "商品库存不足", false),
     DO_NOT_HAVE_ANY_MORE_RECORD(700, "DO_NOT_HAVE_ANY_MORE_RECORD", "没有更多记录", false);
 
     protected int id;
