@@ -28,7 +28,7 @@
                              targetProject="${target.module.sdk.base}/src/main/java"
                              type="XMLMAPPER"/>
 
-        <table schema="rendering_new" tableName="tb_order" domainObjectName="Order"></table>
+        <table schema="rendering_new" tableName="tb_product" domainObjectName="Product"></table>
 
     </context>
 </generatorConfiguration>

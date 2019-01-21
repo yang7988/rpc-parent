@@ -7,6 +7,8 @@ public class Order {
 
     private String orderNo;
 
+    private Integer pruductId;
+
     private Byte payMethod;
 
     private Integer userId;
@@ -31,6 +33,14 @@ public class Order {
 
     public void setOrderNo(String orderNo) {
         this.orderNo = orderNo;
+    }
+
+    public Integer getPruductId() {
+        return pruductId;
+    }
+
+    public void setPruductId(Integer pruductId) {
+        this.pruductId = pruductId;
     }
 
     public Byte getPayMethod() {

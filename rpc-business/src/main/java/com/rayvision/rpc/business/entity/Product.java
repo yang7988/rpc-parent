@@ -1,5 +1,6 @@
 package com.rayvision.rpc.business.entity;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class Product {
@@ -7,7 +8,7 @@ public class Product {
 
     private String name;
 
-    private Integer orderId;
+    private BigDecimal unitPrice;
 
     private Integer stock;
 
@@ -31,12 +32,12 @@ public class Product {
         this.name = name;
     }
 
-    public Integer getOrderId() {
-        return orderId;
+    public BigDecimal getUnitPrice() {
+        return unitPrice;
     }
 
-    public void setOrderId(Integer orderId) {
-        this.orderId = orderId;
+    public void setUnitPrice(BigDecimal unitPrice) {
+        this.unitPrice = unitPrice;
     }
 
     public Integer getStock() {

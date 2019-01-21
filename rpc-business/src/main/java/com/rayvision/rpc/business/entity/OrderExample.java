@@ -235,6 +235,66 @@ public class OrderExample {
             return (Criteria) this;
         }
 
+        public Criteria andPruductIdIsNull() {
+            addCriterion("pruduct_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPruductIdIsNotNull() {
+            addCriterion("pruduct_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPruductIdEqualTo(Integer value) {
+            addCriterion("pruduct_id =", value, "pruductId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPruductIdNotEqualTo(Integer value) {
+            addCriterion("pruduct_id <>", value, "pruductId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPruductIdGreaterThan(Integer value) {
+            addCriterion("pruduct_id >", value, "pruductId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPruductIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("pruduct_id >=", value, "pruductId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPruductIdLessThan(Integer value) {
+            addCriterion("pruduct_id <", value, "pruductId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPruductIdLessThanOrEqualTo(Integer value) {
+            addCriterion("pruduct_id <=", value, "pruductId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPruductIdIn(List<Integer> values) {
+            addCriterion("pruduct_id in", values, "pruductId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPruductIdNotIn(List<Integer> values) {
+            addCriterion("pruduct_id not in", values, "pruductId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPruductIdBetween(Integer value1, Integer value2) {
+            addCriterion("pruduct_id between", value1, value2, "pruductId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPruductIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("pruduct_id not between", value1, value2, "pruductId");
+            return (Criteria) this;
+        }
+
         public Criteria andPayMethodIsNull() {
             addCriterion("pay_method is null");
             return (Criteria) this;
