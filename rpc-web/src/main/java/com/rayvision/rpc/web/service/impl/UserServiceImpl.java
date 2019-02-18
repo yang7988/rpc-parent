@@ -37,8 +37,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public ApiResponse purchaseProduct(Integer userId, Integer productId, Integer quantity,Byte payMethod) {
+    public ApiResponse purchase(Integer userId, Integer productId, Integer quantity,Byte payMethod) {
+        // 订单微服务创建订单
         ApiResponse orderResponse = rpcOrderService.createOrder(userId, payMethod, productId, quantity);
+        // 获取用户的账户详情
         UserAccountExample userAccountExample = new UserAccountExample();
         userAccountExample.createCriteria().andUserIdEqualTo(userId);
         List<UserAccount> userAccounts = userAccountMapper.selectByExample(userAccountExample);
@@ -47,15 +49,19 @@ public class UserServiceImpl implements UserService {
         }
         UserAccount userAccount = userAccounts.get(0);
         Map<String,Object> objectMap = (Map<String, Object>) orderResponse.getData();
+        // 计算商品的总价
         BigDecimal totalPrice = (BigDecimal) objectMap.get("totalPrice");
         if(userAccount.getBalance().compareTo(totalPrice) < 0) {
             ApiResponse.returnFail(ApiResponseEnum.FAIL);
         }
+        // 跟新账户余额
         UserAccount userAccountForUpdate = new UserAccount();
         userAccountForUpdate.setId(userAccount.getId());
         userAccountForUpdate.setBalance(userAccount.getBalance().subtract(totalPrice).setScale(2,BigDecimal.ROUND_HALF_UP));
         userAccountMapper.updateByPrimaryKeySelective(userAccountForUpdate);
+        // 保存订单
         rpcOrderService.saveOrder(JSON.toJSONString(objectMap));
+        // 扣减商品库存
         rpcProductService.deductionProductStock(productId,quantity);
         return ApiResponse.returnSuccess();
     }
