@@ -1,6 +1,7 @@
 package com.rayvision.rpc.web.controller;
 
 import com.rayvision.rpc.common.ApiResponse;
+import com.rayvision.rpc.web.service.GrayUpgradeService;
 import com.rayvision.rpc.web.service.UserService;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.slf4j.Logger;
@@ -20,6 +21,9 @@ public class ApiController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private GrayUpgradeService grayUpgradeService;
+
     @GetMapping("/purchase/product/{userId}/{payMethod}/{productId}/{quantity}")
     public ApiResponse purchase(@PathVariable Integer userId, @PathVariable Integer productId,
                                        @PathVariable Integer quantity, @PathVariable Byte payMethod) {
@@ -35,5 +39,10 @@ public class ApiController {
         }
         LOGGER.warn("======回调通知数据=======" + params);
         return ApiResponse.returnSuccess();
+    }
+
+    @GetMapping(value = "/getVersion")
+    public ApiResponse getVersion() {
+        return grayUpgradeService.getDubboServiceVersion();
     }
 }

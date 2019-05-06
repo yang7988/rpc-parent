@@ -23,10 +23,10 @@ import java.util.Map;
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Reference
+    @Reference(check = false)
     private RpcOrderService rpcOrderService;
 
-    @Reference
+    @Reference(check = false)
     private RpcProductService rpcProductService;
 
     @Autowired
