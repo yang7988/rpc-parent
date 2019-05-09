@@ -11,7 +11,6 @@
 		<module>rpc-business</module>
 		<module>rpc-api</module>
 		<module>rpc-common</module>
-		<module>rpc-generator</module>
 		<module>rpc-cache</module>
 	</modules>
 	<packaging>pom</packaging>
@@ -104,34 +103,9 @@
 		</dependencies>
 	</dependencyManagement>
 
-	<profiles>
-		<profile>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<id>alpha</id>
-			<properties>
-				<deploy.type>alpha</deploy.type>
-			</properties>
-		</profile>
-		<profile>
-			<id>beta</id>
-			<properties>
-				<deploy.type>beta</deploy.type>
-			</properties>
-		</profile>
-	</profiles>
 
 	<build>
-		<finalName>${project.artifactId}-${deploy.type}</finalName>
-		<resources>
-			<resource>
-				<directory>src/main/resources.${deploy.type}</directory>
-			</resource>
-			<resource>
-				<directory>src/main/resources</directory>
-			</resource>
-		</resources>
+		<finalName>${project.artifactId}</finalName>
 		<pluginManagement>
 			<plugins>
 				<plugin>
